@@ -1,1 +1,37 @@
-test
+
+{% if flights %}
+    <table>
+        <thead>
+        <tr>
+            <th width="50">Flight number</th>
+            <th width="200">Airport end</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Carrier</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>
+                {{ flight.flight_number }}
+            </td>
+            <td>
+                {{ flight.airport_end }}
+            </td>
+            <td>
+                {{ flight.departure }}
+            </td>
+            <td>
+                {{ flight.arrival }}
+            </td>
+            <td>
+                {{ flight.carrier.full_name }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No flights are available.</p>
+{% endif %}

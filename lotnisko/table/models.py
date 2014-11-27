@@ -1,4 +1,3 @@
-import string
 from datetime import timedelta
 
 from django.db.models import (
@@ -6,12 +5,7 @@ from django.db.models import (
     DateTimeField,
     CharField,
     ForeignKey,
-    IntegerField,
-    TextField,
-    URLField,
-    PositiveIntegerField,
-    DateField,
-    NullBooleanField
+    PositiveIntegerField
 )
 from django.utils import timezone
 
@@ -25,12 +19,8 @@ class Flight(Model):
     arrival = DateTimeField(
         blank=False, null=False, default=timezone.now
     )
-
+    carrier = ForeignKey('Carrier')
 
 
 class Carrier(Model):
     full_name = CharField(max_length=100, blank=True, null=True)
-    flight = ForeignKey('Flight')
-
-    def __str__(self):
-        return self.full_name

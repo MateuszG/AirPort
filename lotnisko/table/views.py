@@ -11,4 +11,4 @@ class IndexFlights(generic.ListView):
     context_object_name = 'flights'
 
     def get_queryset(self):
-        return Flight.objects.filter()
+        return Flight.objects.all().order_by('-departure')

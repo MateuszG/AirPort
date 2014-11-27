@@ -3,12 +3,12 @@ from django.contrib.admin import ModelAdmin, site, TabularInline
 from .models import Flight, Carrier
 
 
-class CarrierInline(TabularInline):
-    model = Carrier
+class FlightInline(TabularInline):
+    model = Flight
     extra = 1
 
 
-class FlightAdmin(ModelAdmin):
-    inlines = [CarrierInline]
+class CarrierAdmin(ModelAdmin):
+    inlines = [FlightInline]
 
-site.register(Flight, FlightAdmin)
+site.register(Carrier, CarrierAdmin)
